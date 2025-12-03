@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Temp Mail by Ghosty</title>
-
 <style>
     body, html {
         margin: 0;
@@ -13,6 +12,7 @@
         font-family: Arial, sans-serif;
         color: white;
         overflow: hidden;
+        background: #000;
     }
 
     /* Background Video */
@@ -81,18 +81,34 @@
 
     .groupButtons {
         margin-top: 25px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .groupButtons a {
+        text-decoration: none;
+    }
+
+    .groupButtons .btn {
+        width: 260px;             /* same width for both buttons */
+        text-align: center;
     }
 
     /* Transparent Inbox */
     iframe {
         width: 90%;
+        max-width: 720px;
         height: 300px;
         border-radius: 10px;
         border: 2px solid cyan;
         background: transparent; /* FULL TRANSPARENT */
     }
-</style>
 
+    /* make inner srcdoc text white when iframe content uses transparent background */
+    /* not applied to iframe contents directly, so we set inline styles in srcdoc */
+</style>
 </head>
 <body>
 
@@ -117,14 +133,17 @@
     <button class="btn" onclick="generateMail()">Generate Mail</button>
 
     <h3>Your Inbox</h3>
-    <iframe id="inboxFrame" srcdoc="<h2 style='text-align:center;'>No messages yet</h2>"></iframe>
+    <!-- srcdoc includes a transparent body style so the iframe background is transparent -->
+    <iframe id="inboxFrame" srcdoc="<body style='background:transparent;color:white;margin:0;font-family:Arial,sans-serif;'><h2 style='text-align:center;padding-top:60px;'>No messages yet</h2></body>"></iframe>
 
     <div class="groupButtons">
-        <a href="https://chat.whatsapp.com/CPQC5IGJA2m8iaOWOE8CAN?mode=hqrt1">
+        <!-- WhatsApp: opens in new tab -->
+        <a href="https://chat.whatsapp.com/CPQC5IGJA2m8iaOWOE8CAN?mode=hqrt1" target="_blank" rel="noopener noreferrer">
             <button class="btn">Join WhatsApp Group</button>
         </a>
 
-        <a href="https://t.me/CyropesTricks">
+        <!-- Telegram: fixed and opens in new tab -->
+        <a href="https://t.me/CyropesTricks" target="_blank" rel="noopener noreferrer">
             <button class="btn">Join Telegram Group</button>
         </a>
     </div>
@@ -153,10 +172,15 @@ function generateMail() {
 }
 
 /* Update Inbox */
+/* Note: srcdoc must include a transparent body style to keep the iframe visually transparent */
 function updateInbox() {
     let inboxHTML = `
-        <h3 style='text-align:center;'>Inbox for: ${currentEmail}</h3>
-        <p style='text-align:center;'>No new emails.</p>
+        <body style="background:transparent;color:white;margin:0;font-family:Arial,sans-serif;">
+            <div style="padding:18px;text-align:center;">
+                <h3 style="margin:0 0 12px 0;">Inbox for: ${currentEmail}</h3>
+                <p style="margin:0;">No new emails.</p>
+            </div>
+        </body>
     `;
     document.getElementById("inboxFrame").srcdoc = inboxHTML;
 }
