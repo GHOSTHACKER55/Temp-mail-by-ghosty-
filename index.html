@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Temp Mail by Ghosty</title>
 
 <style>
@@ -13,16 +13,6 @@
         font-family: Arial, sans-serif;
         color: white;
         overflow: hidden;
-        background: #000;
-    }
-
-    /* Smooth Fade-in */
-    body {
-        animation: fadeIn 1.2s ease-in-out;
-    }
-    @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
     }
 
     /* Background Video */
@@ -34,8 +24,6 @@
         height: 100%;
         object-fit: cover;
         z-index: -1;
-        filter: brightness(70%);
-        opacity: 1;
     }
 
     /* Start Screen */
@@ -45,17 +33,12 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0,0,0,0.70);
+        background: rgba(0,0,0,0.75);
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        backdrop-filter: blur(5px);
-        animation: fadeStart 1.2s ease-in-out;
-    }
-    @keyframes fadeStart {
-        from { opacity: 0; }
-        to { opacity: 1; }
+        backdrop-filter: blur(4px);
     }
 
     #startBtn {
@@ -66,7 +49,6 @@
         cursor: pointer;
         border: none;
         font-weight: bold;
-        box-shadow: 0 0 15px cyan;
     }
 
     #mainTool {
@@ -78,7 +60,7 @@
     }
 
     .email-box {
-        background: rgba(0,0,0,0.55);
+        background: rgba(0,0,0,0.5);
         padding: 15px;
         border-radius: 10px;
         margin-bottom: 20px;
@@ -91,38 +73,36 @@
         padding: 12px 25px;
         background: #00ffff;
         border: none;
-        border-radius: 8px;
+        border-radius: 10px;
         cursor: pointer;
-        margin: 5px;
+        margin: 5px auto;
         font-weight: bold;
         width: 260px;
-        text-align: center;
-        box-shadow: 0 0 10px cyan;
+        display: block;
+        color: #000;
+        box-shadow: 0 0 15px #00ffff;
     }
 
     .groupButtons {
         margin-top: 25px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
+        text-align: center;
     }
 
+    /* Transparent Inbox */
     iframe {
         width: 90%;
-        max-width: 720px;
         height: 300px;
         border-radius: 10px;
         border: 2px solid cyan;
         background: transparent;
     }
 </style>
-</head>
 
+</head>
 <body>
 
 <!-- Background Video -->
-<video id="bgVideo" autoplay muted playsinline loop>
+<video id="bgVideo" muted playsinline loop>
     <source src="https://raw.githubusercontent.com/faizankhanchang22-gif/Fauzuna/0d8386c8d7fa219d8a3390a01ba59402d7b31dab/AQPYKYVB-nMO-Ray4szZJNQQ3QMxLMzxeRYxOgW2bFyfnEB9m7qPgNqa0mY7l9gcciWi1SarcQgjp0Jk6Ttxa24kVYMMqMFOyUCWh5o.mp4" type="video/mp4">
 </video>
 
@@ -143,19 +123,15 @@
 
     <h3>Your Inbox</h3>
 
-    <iframe id="inboxFrame" srcdoc="
-        <body style='background:transparent;color:white;margin:0;font-family:Arial;'>
-            <h2 style='text-align:center;padding-top:60px;'>No messages yet</h2>
-        </body>">
-    </iframe>
+    <iframe id="inboxFrame" srcdoc="<h2 style='text-align:center;color:white;'>No messages yet</h2>"></iframe>
 
     <div class="groupButtons">
-        <a href='https://chat.whatsapp.com/CPQC5IGJA2m8iaOWOE8CAN?mode=hqrt1' target='_blank'>
-            <button class='btn'>Join WhatsApp Group</button>
+        <a href="https://chat.whatsapp.com/CPQC5IGJA2m8iaOWOE8CAN?mode=hqrt1" target="_blank">
+            <button class="btn">Join WhatsApp Group</button>
         </a>
 
-        <a href='https://t.me/CyropesTricks' target='_blank'>
-            <button class='btn'>Join Telegram Group</button>
+        <a href="https://t.me/CyropesTricks" target="_blank">
+            <button class="btn">Join Telegram Group</button>
         </a>
     </div>
 </div>
@@ -185,19 +161,17 @@ function generateMail() {
 /* Update Inbox */
 function updateInbox() {
     let inboxHTML = `
-        <body style="background:transparent;color:white;margin:0;font-family:Arial;">
-            <div style="padding:18px;text-align:center;">
-                <h3 style="margin:0 0 12px 0;">Inbox for: ${currentEmail}</h3>
-                <p style="margin:0;">No new emails.</p>
-            </div>
-        </body>
+        <h3 style='text-align:center;color:white;'>Inbox for: ${currentEmail}</h3>
+        <p style='text-align:center;color:white;'>No new emails.</p>
     `;
     document.getElementById("inboxFrame").srcdoc = inboxHTML;
 }
 
-/* Auto Refresh every 5 seconds */
+/* AUTO REFRESH every 5 seconds */
 setInterval(() => {
-    if (currentEmail !== "") updateInbox();
+    if (currentEmail !== "") {
+        updateInbox();
+    }
 }, 5000);
 </script>
 
