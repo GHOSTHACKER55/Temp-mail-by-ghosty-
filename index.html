@@ -4,6 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Temp Mail by Ghosty</title>
+
 <style>
     body, html {
         margin: 0;
@@ -15,6 +16,15 @@
         background: #000;
     }
 
+    /* Smooth Fade-in */
+    body {
+        animation: fadeIn 1.2s ease-in-out;
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
     /* Background Video */
     #bgVideo {
         position: fixed;
@@ -24,6 +34,8 @@
         height: 100%;
         object-fit: cover;
         z-index: -1;
+        filter: brightness(70%);
+        opacity: 1;
     }
 
     /* Start Screen */
@@ -33,12 +45,17 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0,0,0,0.75);
+        background: rgba(0,0,0,0.70);
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        backdrop-filter: blur(4px);
+        backdrop-filter: blur(5px);
+        animation: fadeStart 1.2s ease-in-out;
+    }
+    @keyframes fadeStart {
+        from { opacity: 0; }
+        to { opacity: 1; }
     }
 
     #startBtn {
@@ -49,6 +66,7 @@
         cursor: pointer;
         border: none;
         font-weight: bold;
+        box-shadow: 0 0 15px cyan;
     }
 
     #mainTool {
@@ -60,7 +78,7 @@
     }
 
     .email-box {
-        background: rgba(0,0,0,0.5);
+        background: rgba(0,0,0,0.55);
         padding: 15px;
         border-radius: 10px;
         margin-bottom: 20px;
@@ -71,12 +89,15 @@
 
     .btn {
         padding: 12px 25px;
-        background: #0ff;
+        background: #00ffff;
         border: none;
         border-radius: 8px;
         cursor: pointer;
         margin: 5px;
         font-weight: bold;
+        width: 260px;
+        text-align: center;
+        box-shadow: 0 0 10px cyan;
     }
 
     .groupButtons {
@@ -87,33 +108,21 @@
         gap: 12px;
     }
 
-    .groupButtons a {
-        text-decoration: none;
-    }
-
-    .groupButtons .btn {
-        width: 260px;             /* same width for both buttons */
-        text-align: center;
-    }
-
-    /* Transparent Inbox */
     iframe {
         width: 90%;
         max-width: 720px;
         height: 300px;
         border-radius: 10px;
         border: 2px solid cyan;
-        background: transparent; /* FULL TRANSPARENT */
+        background: transparent;
     }
-
-    /* make inner srcdoc text white when iframe content uses transparent background */
-    /* not applied to iframe contents directly, so we set inline styles in srcdoc */
 </style>
 </head>
+
 <body>
 
 <!-- Background Video -->
-<video id="bgVideo" muted playsinline loop>
+<video id="bgVideo" autoplay muted playsinline loop>
     <source src="https://raw.githubusercontent.com/faizankhanchang22-gif/Fauzuna/0d8386c8d7fa219d8a3390a01ba59402d7b31dab/AQPYKYVB-nMO-Ray4szZJNQQ3QMxLMzxeRYxOgW2bFyfnEB9m7qPgNqa0mY7l9gcciWi1SarcQgjp0Jk6Ttxa24kVYMMqMFOyUCWh5o.mp4" type="video/mp4">
 </video>
 
@@ -133,18 +142,20 @@
     <button class="btn" onclick="generateMail()">Generate Mail</button>
 
     <h3>Your Inbox</h3>
-    <!-- srcdoc includes a transparent body style so the iframe background is transparent -->
-    <iframe id="inboxFrame" srcdoc="<body style='background:transparent;color:white;margin:0;font-family:Arial,sans-serif;'><h2 style='text-align:center;padding-top:60px;'>No messages yet</h2></body>"></iframe>
+
+    <iframe id="inboxFrame" srcdoc="
+        <body style='background:transparent;color:white;margin:0;font-family:Arial;'>
+            <h2 style='text-align:center;padding-top:60px;'>No messages yet</h2>
+        </body>">
+    </iframe>
 
     <div class="groupButtons">
-        <!-- WhatsApp: opens in new tab -->
-        <a href="https://chat.whatsapp.com/CPQC5IGJA2m8iaOWOE8CAN?mode=hqrt1" target="_blank" rel="noopener noreferrer">
-            <button class="btn">Join WhatsApp Group</button>
+        <a href='https://chat.whatsapp.com/CPQC5IGJA2m8iaOWOE8CAN?mode=hqrt1' target='_blank'>
+            <button class='btn'>Join WhatsApp Group</button>
         </a>
 
-        <!-- Telegram: fixed and opens in new tab -->
-        <a href="https://t.me/CyropesTricks" target="_blank" rel="noopener noreferrer">
-            <button class="btn">Join Telegram Group</button>
+        <a href='https://t.me/CyropesTricks' target='_blank'>
+            <button class='btn'>Join Telegram Group</button>
         </a>
     </div>
 </div>
@@ -172,10 +183,9 @@ function generateMail() {
 }
 
 /* Update Inbox */
-/* Note: srcdoc must include a transparent body style to keep the iframe visually transparent */
 function updateInbox() {
     let inboxHTML = `
-        <body style="background:transparent;color:white;margin:0;font-family:Arial,sans-serif;">
+        <body style="background:transparent;color:white;margin:0;font-family:Arial;">
             <div style="padding:18px;text-align:center;">
                 <h3 style="margin:0 0 12px 0;">Inbox for: ${currentEmail}</h3>
                 <p style="margin:0;">No new emails.</p>
@@ -185,11 +195,9 @@ function updateInbox() {
     document.getElementById("inboxFrame").srcdoc = inboxHTML;
 }
 
-/* AUTO REFRESH every 5 seconds */
+/* Auto Refresh every 5 seconds */
 setInterval(() => {
-    if (currentEmail !== "") {
-        updateInbox();
-    }
+    if (currentEmail !== "") updateInbox();
 }, 5000);
 </script>
 
