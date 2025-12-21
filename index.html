@@ -1,179 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Temp Mail by Ghosty</title>
-
-<style>
-    body, html {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        font-family: Arial, sans-serif;
-        color: white;
-        overflow: hidden;
-    }
-
-    /* Background Video */
-    #bgVideo {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        z-index: -1;
-    }
-
-    /* Start Screen */
-    #startScreen {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0,0,0,0.75);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        backdrop-filter: blur(4px);
-    }
-
-    #startBtn {
-        background: #00ffff;
-        padding: 15px 35px;
-        font-size: 22px;
-        border-radius: 12px;
-        cursor: pointer;
-        border: none;
-        font-weight: bold;
-    }
-
-    #mainTool {
-        display: none;
-        padding: 20px;
-        text-align: center;
-        position: relative;
-        z-index: 5;
-    }
-
-    .email-box {
-        background: rgba(0,0,0,0.5);
-        padding: 15px;
-        border-radius: 10px;
-        margin-bottom: 20px;
-        display: inline-block;
-        font-size: 20px;
-        border: 2px solid cyan;
-    }
-
-    .btn {
-        padding: 12px 25px;
-        background: #00ffff;
-        border: none;
-        border-radius: 10px;
-        cursor: pointer;
-        margin: 5px auto;
-        font-weight: bold;
-        width: 260px;
-        display: block;
-        color: #000;
-        box-shadow: 0 0 15px #00ffff;
-    }
-
-    .groupButtons {
-        margin-top: 25px;
-        text-align: center;
-    }
-
-    /* Transparent Inbox */
-    iframe {
-        width: 90%;
-        height: 300px;
-        border-radius: 10px;
-        border: 2px solid cyan;
-        background: transparent;
-    }
-</style>
-
+<title>Protected</title>
 </head>
 <body>
-
-<!-- Background Video -->
-<video id="bgVideo" muted playsinline loop>
-    <source src="https://raw.githubusercontent.com/faizankhanchang22-gif/Fauzuna/0d8386c8d7fa219d8a3390a01ba59402d7b31dab/AQPYKYVB-nMO-Ray4szZJNQQ3QMxLMzxeRYxOgW2bFyfnEB9m7qPgNqa0mY7l9gcciWi1SarcQgjp0Jk6Ttxa24kVYMMqMFOyUCWh5o.mp4" type="video/mp4">
-</video>
-
-<!-- Start Screen -->
-<div id="startScreen">
-    <h1>Temp Mail by Ghosty</h1>
-    <button id="startBtn">START TOOL</button>
-</div>
-
-<!-- Main Tool -->
-<div id="mainTool">
-    <h2>Your Temporary Mail</h2>
-
-    <div class="email-box" id="emailBox">Click Generate</div>
-    <br>
-
-    <button class="btn" onclick="generateMail()">Generate Mail</button>
-
-    <h3>Your Inbox</h3>
-
-    <iframe id="inboxFrame" srcdoc="<h2 style='text-align:center;color:white;'>No messages yet</h2>"></iframe>
-
-    <div class="groupButtons">
-        <a href="https://chat.whatsapp.com/CPQC5IGJA2m8iaOWOE8CAN?mode=hqrt1" target="_blank">
-            <button class="btn">Join WhatsApp Group</button>
-        </a>
-
-        <a href="https://t.me/CyropesTricks" target="_blank">
-            <button class="btn">Join Telegram Group</button>
-        </a>
-    </div>
-</div>
-
 <script>
-/* START TOOL */
-document.getElementById("startBtn").onclick = function() {
-    document.getElementById("startScreen").style.display = "none";
-    document.getElementById("mainTool").style.display = "block";
-
-    let video = document.getElementById("bgVideo");
-    video.muted = false;
-    video.play();
-};
-
-let currentEmail = "";
-
-/* Generate Temp Mail */
-function generateMail() {
-    let random = Math.random().toString(36).substring(2, 10);
-    currentEmail = random + "@ghostymail.com";
-    document.getElementById("emailBox").innerText = currentEmail;
-
-    updateInbox();
-}
-
-/* Update Inbox */
-function updateInbox() {
-    let inboxHTML = `
-        <h3 style='text-align:center;color:white;'>Inbox for: ${currentEmail}</h3>
-        <p style='text-align:center;color:white;'>No new emails.</p>
-    `;
-    document.getElementById("inboxFrame").srcdoc = inboxHTML;
-}
-
-/* AUTO REFRESH every 5 seconds */
-setInterval(() => {
-    if (currentEmail !== "") {
-        updateInbox();
-    }
-}, 5000);
+(function(){
+    var d = "PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9ImVuIj4KPGhlYWQ+CjxtZXRhIGNoYXJzZXQ9IlVURi04Ij4KPG1ldGEgbmFtZT0idmlld3BvcnQiIGNvbnRlbnQ9IndpZHRoPWRldmljZS13aWR0aCwgaW5pdGlhbC1zY2FsZT0xLjAiPgo8dGl0bGU+VGVtcCBNYWlsIGJ5IEdob3N0eTwvdGl0bGU+Cgo8c3R5bGU+CiAgICBib2R5LCBodG1sIHsKICAgICAgICBtYXJnaW46IDA7CiAgICAgICAgcGFkZGluZzogMDsKICAgICAgICBoZWlnaHQ6IDEwMCU7CiAgICAgICAgZm9udC1mYW1pbHk6IEFyaWFsLCBzYW5zLXNlcmlmOwogICAgICAgIGNvbG9yOiB3aGl0ZTsKICAgICAgICBvdmVyZmxvdzogaGlkZGVuOwogICAgfQoKICAgIC8qIEJhY2tncm91bmQgVmlkZW8gKi8KICAgICNiZ1ZpZGVvIHsKICAgICAgICBwb3NpdGlvbjogZml4ZWQ7CiAgICAgICAgdG9wOiAwOwogICAgICAgIGxlZnQ6IDA7CiAgICAgICAgd2lkdGg6IDEwMCU7CiAgICAgICAgaGVpZ2h0OiAxMDAlOwogICAgICAgIG9iamVjdC1maXQ6IGNvdmVyOwogICAgICAgIHotaW5kZXg6IC0xOwogICAgfQoKICAgIC8qIFN0YXJ0IFNjcmVlbiAqLwogICAgI3N0YXJ0U2NyZWVuIHsKICAgICAgICBwb3NpdGlvbjogYWJzb2x1dGU7CiAgICAgICAgdG9wOiAwOwogICAgICAgIGxlZnQ6IDA7CiAgICAgICAgd2lkdGg6IDEwMCU7CiAgICAgICAgaGVpZ2h0OiAxMDAlOwogICAgICAgIGJhY2tncm91bmQ6IHJnYmEoMCwwLDAsMC43NSk7CiAgICAgICAgZGlzcGxheTogZmxleDsKICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjsKICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyOwogICAgICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47CiAgICAgICAgYmFja2Ryb3AtZmlsdGVyOiBibHVyKDRweCk7CiAgICB9CgogICAgI3N0YXJ0QnRuIHsKICAgICAgICBiYWNrZ3JvdW5kOiAjMDBmZmZmOwogICAgICAgIHBhZGRpbmc6IDE1cHggMzVweDsKICAgICAgICBmb250LXNpemU6IDIycHg7CiAgICAgICAgYm9yZGVyLXJhZGl1czogMTJweDsKICAgICAgICBjdXJzb3I6IHBvaW50ZXI7CiAgICAgICAgYm9yZGVyOiBub25lOwogICAgICAgIGZvbnQtd2VpZ2h0OiBib2xkOwogICAgfQoKICAgICNtYWluVG9vbCB7CiAgICAgICAgZGlzcGxheTogbm9uZTsKICAgICAgICBwYWRkaW5nOiAyMHB4OwogICAgICAgIHRleHQtYWxpZ246IGNlbnRlcjsKICAgICAgICBwb3NpdGlvbjogcmVsYXRpdmU7CiAgICAgICAgei1pbmRleDogNTsKICAgIH0KCiAgICAuZW1haWwtYm94IHsKICAgICAgICBiYWNrZ3JvdW5kOiByZ2JhKDAsMCwwLDAuNSk7CiAgICAgICAgcGFkZGluZzogMTVweDsKICAgICAgICBib3JkZXItcmFkaXVzOiAxMHB4OwogICAgICAgIG1hcmdpbi1ib3R0b206IDIwcHg7CiAgICAgICAgZGlzcGxheTogaW5saW5lLWJsb2NrOwogICAgICAgIGZvbnQtc2l6ZTogMjBweDsKICAgICAgICBib3JkZXI6IDJweCBzb2xpZCBjeWFuOwogICAgfQoKICAgIC5idG4gewogICAgICAgIHBhZGRpbmc6IDEycHggMjVweDsKICAgICAgICBiYWNrZ3JvdW5kOiAjMDBmZmZmOwogICAgICAgIGJvcmRlcjogbm9uZTsKICAgICAgICBib3JkZXItcmFkaXVzOiAxMHB4OwogICAgICAgIGN1cnNvcjogcG9pbnRlcjsKICAgICAgICBtYXJnaW46IDVweCBhdXRvOwogICAgICAgIGZvbnQtd2VpZ2h0OiBib2xkOwogICAgICAgIHdpZHRoOiAyNjBweDsKICAgICAgICBkaXNwbGF5OiBibG9jazsKICAgICAgICBjb2xvcjogIzAwMDsKICAgICAgICBib3gtc2hhZG93OiAwIDAgMTVweCAjMDBmZmZmOwogICAgfQoKICAgIC5ncm91cEJ1dHRvbnMgewogICAgICAgIG1hcmdpbi10b3A6IDI1cHg7CiAgICAgICAgdGV4dC1hbGlnbjogY2VudGVyOwogICAgfQoKICAgIC8qIFRyYW5zcGFyZW50IEluYm94ICovCiAgICBpZnJhbWUgewogICAgICAgIHdpZHRoOiA5MCU7CiAgICAgICAgaGVpZ2h0OiAzMDBweDsKICAgICAgICBib3JkZXItcmFkaXVzOiAxMHB4OwogICAgICAgIGJvcmRlcjogMnB4IHNvbGlkIGN5YW47CiAgICAgICAgYmFja2dyb3VuZDogdHJhbnNwYXJlbnQ7CiAgICB9Cjwvc3R5bGU+Cgo8L2hlYWQ+Cjxib2R5PgoKPCEtLSBCYWNrZ3JvdW5kIFZpZGVvIC0tPgo8dmlkZW8gaWQ9ImJnVmlkZW8iIG11dGVkIHBsYXlzaW5saW5lIGxvb3A+CiAgICA8c291cmNlIHNyYz0iaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2ZhaXphbmtoYW5jaGFuZzIyLWdpZi9GYXV6dW5hLzBkODM4NmM4ZDdmYTIxOWQ4YTMzOTBhMDFiYTU5NDAyZDdiMzFkYWIvQVFQWUtZVkItbk1PLVJheTRzelpKTlFRM1FNeExNenhlUll4T2dXMmJGeWZuRUI5bTdxUGdOcWEwbVk3bDlnY2NpV2kxU2FyY1FnanAwSms2VHR4YTI0a1ZZTU1xTUZPeVVDV2g1by5tcDQiIHR5cGU9InZpZGVvL21wNCI+CjwvdmlkZW8+Cgo8IS0tIFN0YXJ0IFNjcmVlbiAtLT4KPGRpdiBpZD0ic3RhcnRTY3JlZW4iPgogICAgPGgxPlRlbXAgTWFpbCBieSBHaG9zdHk8L2gxPgogICAgPGJ1dHRvbiBpZD0ic3RhcnRCdG4iPlNUQVJUIFRPT0w8L2J1dHRvbj4KPC9kaXY+Cgo8IS0tIE1haW4gVG9vbCAtLT4KPGRpdiBpZD0ibWFpblRvb2wiPgogICAgPGgyPllvdXIgVGVtcG9yYXJ5IE1haWw8L2gyPgoKICAgIDxkaXYgY2xhc3M9ImVtYWlsLWJveCIgaWQ9ImVtYWlsQm94Ij5DbGljayBHZW5lcmF0ZTwvZGl2PgogICAgPGJyPgoKICAgIDxidXR0b24gY2xhc3M9ImJ0biIgb25jbGljaz0iZ2VuZXJhdGVNYWlsKCkiPkdlbmVyYXRlIE1haWw8L2J1dHRvbj4KCiAgICA8aDM+WW91ciBJbmJveDwvaDM+CgogICAgPGlmcmFtZSBpZD0iaW5ib3hGcmFtZSIgc3JjZG9jPSI8aDIgc3R5bGU9J3RleHQtYWxpZ246Y2VudGVyO2NvbG9yOndoaXRlOyc+Tm8gbWVzc2FnZXMgeWV0PC9oMj4iPjwvaWZyYW1lPgoKICAgIDxkaXYgY2xhc3M9Imdyb3VwQnV0dG9ucyI+CiAgICAgICAgPGEgaHJlZj0iaHR0cHM6Ly9jaGF0LndoYXRzYXBwLmNvbS9IVk05U3B2bTdIVkdMRVJqOHlvOWtTIiB0YXJnZXQ9Il9ibGFuayI+CiAgICAgICAgICAgIDxidXR0b24gY2xhc3M9ImJ0biI+Sm9pbiBXaGF0c0FwcCBHcm91cDwvYnV0dG9uPgogICAgICAgIDwvYT4KCiAgICAgICAgPGEgaHJlZj0iaHR0cHM6Ly90Lm1lL0N5cm9wZXNUcmlja3MiIHRhcmdldD0iX2JsYW5rIj4KICAgICAgICAgICAgPGJ1dHRvbiBjbGFzcz0iYnRuIj5Kb2luIFRlbGVncmFtIEdyb3VwPC9idXR0b24+CiAgICAgICAgPC9hPgogICAgPC9kaXY+CjwvZGl2PgoKPHNjcmlwdD4KLyogU1RBUlQgVE9PTCAqLwpkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgic3RhcnRCdG4iKS5vbmNsaWNrID0gZnVuY3Rpb24oKSB7CiAgICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgic3RhcnRTY3JlZW4iKS5zdHlsZS5kaXNwbGF5ID0gIm5vbmUiOwogICAgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoIm1haW5Ub29sIikuc3R5bGUuZGlzcGxheSA9ICJibG9jayI7CgogICAgbGV0IHZpZGVvID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoImJnVmlkZW8iKTsKICAgIHZpZGVvLm11dGVkID0gZmFsc2U7CiAgICB2aWRlby5wbGF5KCk7Cn07CgpsZXQgY3VycmVudEVtYWlsID0gIiI7CgovKiBHZW5lcmF0ZSBUZW1wIE1haWwgKi8KZnVuY3Rpb24gZ2VuZXJhdGVNYWlsKCkgewogICAgbGV0IHJhbmRvbSA9IE1hdGgucmFuZG9tKCkudG9TdHJpbmcoMzYpLnN1YnN0cmluZygyLCAxMCk7CiAgICBjdXJyZW50RW1haWwgPSByYW5kb20gKyAiQGdob3N0eW1haWwuY29tIjsKICAgIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCJlbWFpbEJveCIpLmlubmVyVGV4dCA9IGN1cnJlbnRFbWFpbDsKCiAgICB1cGRhdGVJbmJveCgpOwp9CgovKiBVcGRhdGUgSW5ib3ggKi8KZnVuY3Rpb24gdXBkYXRlSW5ib3goKSB7CiAgICBsZXQgaW5ib3hIVE1MID0gYAogICAgICAgIDxoMyBzdHlsZT0ndGV4dC1hbGlnbjpjZW50ZXI7Y29sb3I6d2hpdGU7Jz5JbmJveCBmb3I6ICR7Y3VycmVudEVtYWlsfTwvaDM+CiAgICAgICAgPHAgc3R5bGU9J3RleHQtYWxpZ246Y2VudGVyO2NvbG9yOndoaXRlOyc+Tm8gbmV3IGVtYWlscy48L3A+CiAgICBgOwogICAgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoImluYm94RnJhbWUiKS5zcmNkb2MgPSBpbmJveEhUTUw7Cn0KCi8qIEFVVE8gUkVGUkVTSCBldmVyeSA1IHNlY29uZHMgKi8Kc2V0SW50ZXJ2YWwoKCkgPT4gewogICAgaWYgKGN1cnJlbnRFbWFpbCAhPT0gIiIpIHsKICAgICAgICB1cGRhdGVJbmJveCgpOwogICAgfQp9LCA1MDAwKTsKPC9zY3JpcHQ+Cgo8L2JvZHk+CjwvaHRtbD4=";
+    var h = decodeURIComponent(escape(atob(d)));
+    document.open();
+    document.write(h);
+    document.close();
+})();
 </script>
-
 </body>
 </html>
